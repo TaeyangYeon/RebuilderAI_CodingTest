@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <title>login</title>
+</head>
+<body>
+  <form id="loginCheckForm">
+    <p>id</p>
+    <input type="text" name="id" id="id">
+    <label for="student">student</label>
+    <input type="radio" name="user" id="student" value="student">
+    <label for="professor">professor</label>
+    <input type="radio" name="user" id="professor" value="professor">
+    <label for="manager">manager</label>
+    <input type="radio" name="user" id="manager" value="manager">
+    <button id="loginCheck">login</button>
+  </form>
+</body>
+<script>
+  $(document).ready(function() {
+      $("#loginCheck").click(function(event) {
+          event.preventDefault();
+
+          let id = $("input[name='id']").val();
+          let user = $("input[name='user']:checked").val();
+
+          const formData = {
+              "id": id,
+              "user": user
+          };
+
+          fetch('/login', {
+              method: 'POST',
+              body: JSON.stringify(formData),
+              headers: {
+                  'Content-type': 'application/json'
+              }
+          }).then(response => {
+              if (response.ok) {
+                  window.location.href="/" + user + "/lectureList";
+              } else {
+                  alert("없는 회원입니다.");
+              }
+          }).catch(error => {
+              alert("로그인 실패");
+          })
+      })
+  })
+</script>
+</html>

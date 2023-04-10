@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lecture.registration.manager.repository.mapper.RegistrationManageMapper">
+
+    <select id="registrationDate" resultType="lecture.registration.manager.dto.RegistrationDateDto">
+        select lecture_registration_period_id, start_date, end_date from lecture_registration_period
+    </select>
+
+    <select id="lectureList" resultType="lecture.registration.professor.dto.LectureDto">
+        select lecture_id, lecture_name, lecture_description from lecture
+        where lecture_open = 'open'
+    </select>
+
+    <select id="pendingLecture" resultType="lecture.registration.professor.dto.LectureDto">
+        select lecture_id, lecture_name, lecture_description from lecture
+        where lecture_open = 'close'
+    </select>
+
+    <select id="professor" resultType="lecture.registration.professor.dto.ProfessorDto">
+        select p.professor_id, p.professor_name, p.professor_email, p.professor_mobile from professor as p
+        join professor_lecture as pl on p.professor_id = pl.professor_id
+        where pl.lecture_id = #{lectureId}
+    </select>
+
+    <insert id="insertRegistrationDate" useGeneratedKeys="true">
+        insert into lecture_registration_period (start_date, end_date) values(#{startDate}, #{endDate})
+    </insert>
+
+    <update id="updateRegistrationDate">
+        update lecture_registration_period set start_date = #{startDate}, end_date = #{endDate}
+        where lecture_registration_period_id = #{lectureRefistrationPeriodId}
+    </update>
+
+    <update id="lectureOpen">
+        update lecture set lecture_open = 'open' where lecture_id = #{lectureId}
+    </update>
+
+</mapper>

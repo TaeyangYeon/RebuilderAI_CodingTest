@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lecture.registration.student.repository.mapper.RegistrationLectureMapper">
+
+    <select id="lectureList" resultType="lecture.registration.student.dto.LectureDto">
+        select lecture_id, lecture_name, lecture_description from lecture
+        where lecture_open = 'open'
+    </select>
+
+    <select id="studentLectureCount" resultType="int">
+        select count(lecture_id) from enrollment
+        where student_id = #{studentId}
+    </select>
+
+    <select id="enrollmentCount" resultType="int">
+        select count(lecture_id) from enrollment
+        where lecture_id = #{lectureId}
+    </select>
+
+    <select id="registedLectureList" resultType="lecture.registration.student.dto.LectureDto">
+        select l.lecture_id, l.lecture_name, l.lecture_description from lecture as l
+        join enrollment as e on l.lecture_id = e.lecture_id
+        where e.student_id = #{studentId}
+    </select>
+
+    <select id="registedLecture" resultType="int">
+        select count(*) from enrollment
+        where lecture_id = #{lectureId} and student_id = #{studentId}
+    </select>
+
+    <insert id="registration" useGeneratedKeys="true">
+        insert into enrollment(student_id, lecture_id, registration_date)
+        values(#{studentId}, #{lectureId}, #{registrationDate})
+    </insert>
+
+    <delete id="deleteEnrollment">
+        delete from enrollment where lecture_id = #{lectureId} and student_id = #{studentId}
+    </delete>
+
+</mapper>
