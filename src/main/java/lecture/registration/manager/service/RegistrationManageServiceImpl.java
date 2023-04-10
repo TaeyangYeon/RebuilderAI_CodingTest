@@ -10,6 +10,9 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.List;
 
+/**
+ * 관리자 관리 기능을 담은 service 클래스
+ */
 @Service
 @RequiredArgsConstructor
 public class RegistrationManageServiceImpl implements RegistrationManageService {
