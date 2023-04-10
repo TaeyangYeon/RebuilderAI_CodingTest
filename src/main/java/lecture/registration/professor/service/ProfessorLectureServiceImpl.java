@@ -1,6 +1,5 @@
 package lecture.registration.professor.service;
 
-import lecture.registration.lecture.dto.lectureDto;
 import lecture.registration.manager.dto.RegistrationDateDto;
 import lecture.registration.manager.repository.RegistrationManageRepository;
 import lecture.registration.professor.dto.LectureDto;
@@ -46,7 +45,7 @@ public class ProfessorLectureServiceImpl implements ProfessorLectureService {
   }
 
   @Override
-  public List<lectureDto> pendingLecture(Long professorId) {
+  public List<LectureDto> pendingLecture(Long professorId) {
     return professorLectureRepository.pendingLecture(professorId);
   }
 

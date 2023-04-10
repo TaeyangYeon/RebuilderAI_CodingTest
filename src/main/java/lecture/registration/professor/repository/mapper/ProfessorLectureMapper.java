@@ -1,6 +1,5 @@
 package lecture.registration.professor.repository.mapper;
 
-import lecture.registration.lecture.dto.lectureDto;
 import lecture.registration.professor.dto.LectureDto;
 import lecture.registration.student.dto.StudentDto;
 import org.apache.ibatis.annotations.Mapper;
@@ -19,7 +18,7 @@ public interface ProfessorLectureMapper {
 
   List<LectureDto> lectureList(@Param("professorId") Long professorId);
 
-  List<lectureDto> pendingLecture(@Param("professorId") Long professorId);
+  List<LectureDto> pendingLecture(@Param("professorId") Long professorId);
 
   List<StudentDto> studentList(@Param("lectureId") Long studentId);
 

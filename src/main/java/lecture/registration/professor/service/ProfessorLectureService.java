@@ -1,6 +1,5 @@
 package lecture.registration.professor.service;
 
-import lecture.registration.lecture.dto.lectureDto;
 import lecture.registration.professor.dto.LectureDto;
 import lecture.registration.student.dto.StudentDto;
 
@@ -14,7 +13,7 @@ public interface ProfessorLectureService {
 
   List<LectureDto> lectureList(Long professorId);
 
-  List<lectureDto> pendingLecture(Long professorId);
+  List<LectureDto> pendingLecture(Long professorId);
 
   LectureDto getLecture(Long lectureId);
 

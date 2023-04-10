@@ -30,7 +30,7 @@
     let lectureQuan = [[${lectureQuan}]];
     if (status == 'bottom') {
         alert("강의가 5개 미만으로, 현재 수강신청을 할 수 없습니다.");
-    } else {
+    } else if (status == 'in') {
         if (lectureQuan == 0) {
             alert("신청한 강의가 하나도 없습니다. 최소 1개 이상의 강의를 수강해야 합니다.");
         }

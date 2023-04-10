@@ -1,6 +1,5 @@
 package lecture.registration.professor.repository;
 
-import lecture.registration.lecture.dto.lectureDto;
 import lecture.registration.professor.dto.LectureDto;
 import lecture.registration.student.dto.StudentDto;
 import org.apache.ibatis.annotations.Param;
@@ -17,7 +16,7 @@ public interface ProfessorLectureRepository {
 
   List<LectureDto> lectureList(Long professorId);
 
-  List<lectureDto> pendingLecture(Long professorId);
+  List<LectureDto> pendingLecture(Long professorId);
 
   LectureDto getLecture(Long lectureId);
 

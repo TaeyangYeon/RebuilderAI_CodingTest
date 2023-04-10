@@ -1,6 +1,5 @@
 package lecture.registration.professor.controller;
 
-import lecture.registration.lecture.dto.lectureDto;
 import lecture.registration.login.repository.LoginRepository;
 import lecture.registration.professor.dto.LectureDto;
 import lecture.registration.professor.service.ProfessorLectureService;
@@ -32,7 +31,7 @@ public class ProfessorController {
     List<LectureDto> lectureList = professorLectureService.lectureList(userId(request));
     model.addAttribute("lectureList", lectureList);
 
-    List<lectureDto> pendingLecture = professorLectureService.pendingLecture(userId(request));
+    List<LectureDto> pendingLecture = professorLectureService.pendingLecture(userId(request));
     model.addAttribute("pendingLecture", pendingLecture);
 
     int lectureQuan = professorLectureService.lectureQuan(userId(request));

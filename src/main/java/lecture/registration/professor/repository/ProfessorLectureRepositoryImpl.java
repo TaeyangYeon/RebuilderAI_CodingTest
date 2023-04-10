@@ -1,6 +1,5 @@
 package lecture.registration.professor.repository;
 
-import lecture.registration.lecture.dto.lectureDto;
 import lecture.registration.professor.dto.LectureDto;
 import lecture.registration.professor.repository.mapper.ProfessorLectureMapper;
 import lecture.registration.student.dto.StudentDto;
@@ -43,7 +42,7 @@ public class ProfessorLectureRepositoryImpl implements ProfessorLectureRepositor
   }
 
   @Override
-  public List<lectureDto> pendingLecture(Long professorId) {
+  public List<LectureDto> pendingLecture(Long professorId) {
     return professorLectureMapper.pendingLecture(professorId);
   }
 
